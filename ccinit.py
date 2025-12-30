@@ -21,20 +21,29 @@ def process(text):
                 break
             integer += 1
         array = read[2:integer].split(" ")
+        new_array = []
         old = []
         count = 0
-        int_ = 0
         for string in array:
-            for character in string:
-                if character == '/':
-                    count += 1
-            if count == 0:
-                old = string.split("/")
-            array[int_] = "/".join(old[0:(len(old) - count)]) + string
-            int_ += 1
-        for url in array:
-            result = subprocess.run(["wget", url])
-            process(url)
+            if string[0] == '/':
+                count = 0
+                for character in string:
+                    if character == '/':
+                        count += 1
+                new_array.append( "/".join(old[:(len(old) - count)]) + string )
+            else:
+                new_array.append( string )
+                old = string.split("/") 
+        for url in new_array:
+            try:
+                divisions = url.split("/")            
+                read_file = open(divisions[len(divisions) - 1], "r")
+                read_file.read()
+                read_file.close()
+            except:
+                result = subprocess.run(["wget", url])
+                divisions = url.split("/")
+                process(divisions[len(divisions) - 1])
 if len(sys.argv) > 1:
     process(sys.argv[1])
 else:
