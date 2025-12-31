@@ -4,10 +4,21 @@ import re
 import sys
 import subprocess
 libraries = []
+already_done = {}
+files = {}
+dependencies = {}
 def process(text):
     global libraries
+    global files
+    global dependencies
+    global already_done
     open_file = open(text, "r")
     read = open_file.read()
+    already_done[text] = False
+    try:
+        files[text].append( read )
+    except:
+        files[text] = [read]
     open_file.close()
     if ((read[0]) + (read[1])) == '/*':
         asterisk = False
@@ -40,6 +51,10 @@ def process(text):
                     old = string.split("/") 
         for url in new_array:
             divisions = url.split("/")
+            try:
+                dependencies[text].append( divisions[len(divisions) - 1] )
+            except:
+                dependencies[text] = [divisions[len(divisions) - 1]]
             try:            
                 read_file = open(divisions[len(divisions) - 1], "r")
                 read_file.read()
@@ -49,21 +64,59 @@ def process(text):
                 libraries.append(divisions[len(divisions) - 1])
                 process(divisions[len(divisions) - 1])
 def function(argument):
-    global library
+    global libraries
+    global files
+    global dependencies
+    global already_done
+    include = '#include'
     process(argument)
     read_file = open("main.c", "r")
     text_read_file = read_file.read()
     read_file.close()
+    text_read_file_ = text_read_file[re.find(r'\n[^\n"](.*)\/\*main\*\/.*[^\n"][\s\S]*', text_read_file)];
     write_file = open("main-backup.c", "w")
     write_file.write(text_read_file)
     write_file.close() 
     write_file_2 = open("main.c", "w")
     str_ = []
-    for library in libraries:
-        str_.append('#include "')
-        str_.append(library)
-        str_.append('"\n')
-    str_.append(text_read_file)    
+    includes = []
+    files_keys = list(files.keys)
+    file_count = len(files) - 1
+    already_done = []
+    while False in already_done:
+        while file_count >= 0:
+            key = files_keys[file_count]
+            boolean = True
+            for dependence in dependences[key]:
+                if dependence not in already_done:
+                    boolean = False
+            if boolean:
+                break
+            file = files[key]
+            position = file.find("\n\n")
+            str__ =  file[0:position]
+            i = 0;
+            while(i < len(str__)):
+                _str = str__[i:(i + len(include))]
+                if _str == include:
+                    an_include = str__[(i + len(include) + 1):]
+                    end = an_include.find("\n")
+                    the_str = an_include[:end]
+                    if the_str not in includes:
+                        includes.append(the_str)
+                i += 1
+            already_done[key] = True
+            file_count -= 1
+    for include_item in includes:
+        str_.append("#include ")
+        str_.append(include_item)
+        str_.append("\n")
+    str_.append("\n\n")
+    for file in files:
+        position = file.find("\n\n")
+        str_.append( "\n" )
+        str_.append( file[(position + 2):] )
+    str_.append(text_read_file_)
     write_file_2.write("".join(str_))
     result = subprocess.run(["bash", "compile.sh"])
     write_file_2.close()
@@ -81,7 +134,7 @@ else:
         function(sys.argv[1])
     except:
         file_write = open("main.c", "w")
-        file_write.write('/**/\n//^Where the URLs go.\n#include "project.h"\nint main(){\n}')
+        file_write.write('/**/\n//^Where the URLs go.\n#include "project.h"\n/*main*/\nint main(){\n}')
         file_write.close() 
     try:
         file_open = open("compile.sh", "r")
