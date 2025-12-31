@@ -7,7 +7,7 @@ enum Operation{
 	DIVIDE,
 	UNDEFINED,
 };
-//Works, but it actually edits what it receives, so it must be editable, which can be made using the array
+//Works, but it actually edits what it receives, so it must be editable, which can be made using the array.
 struct option_float process(char* arr){
 	u32 layer = 0;
 	float result = 0;
