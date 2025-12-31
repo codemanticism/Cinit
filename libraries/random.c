@@ -7,8 +7,6 @@ int generate_random_number(unsigned int limit){
     timespec_get(&ts, TIME_UTC);
     char buff[100];
     strftime(buff, sizeof buff, "%D %T", gmtime(&ts.tv_sec));
-    printf("Current time: %s.%09ld UTC\n", buff, ts.tv_nsec);
-    printf("-%ld", ts.tv_nsec);
     unsigned int int_ = ts.tv_nsec * 1000000000000;
     unsigned int result = 0;
 	for(; int_ > 0; int_ /= 10){

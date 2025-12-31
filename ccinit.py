@@ -53,5 +53,5 @@ else:
         file_open.close()
     except:
         file_write = open("main.c", "w")
-        file_write.write("/**///<-- Here's where the URLs of the files go. The URL doesn't need to be complete: https://raw.githubusercontent.com/example/example/refs/heads/master/src/chmod.c /cat.c. Seperated by space, please. \nint main(){\n}")
+        file_write.write("/**/\n//^Where the URLs go. Also \nint main(){\n}")
         file_write.close() 

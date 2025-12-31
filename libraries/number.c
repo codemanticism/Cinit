@@ -43,12 +43,12 @@ struct option_number process_integer(char* string){
 	struct option_number to_return;
 	to_return.unactivated = 0;
 	to_return.number = number;
-	printf("(");
-	printf("%u", number);
-	printf(")"); 
+	//printf("(");
+	//printf("%u", number);
+	//printf(")"); 
 	return to_return;	
 }
-//works
+//Works, but it actually edits what it receives, so it must be editable, which can be made using the array
 struct option_float process_float(char* string){
 	for(u32 i = 0; string[i] != '\0'; i++){
 		if(string[i] == '.'){
@@ -67,7 +67,7 @@ struct option_float process_float(char* string){
 				return opt_float;
 			}
 			float float_ = (((float)(return_option_number.number)) / how_many_powers_of_ten(position)) + return_option_number_new.number;
-			printf("@ %f @", float_);
+			//printf("@ %f @", float_);
 			string[i] = '.';
 			struct option_float opt_float;
 			opt_float.number = float_;
@@ -75,7 +75,7 @@ struct option_float process_float(char* string){
 			return opt_float;
 		}
 	}	
-	printf("*");
+	//printf("*");
 	struct option_number return_float = process_integer(string);
 	struct option_float opt_float;
 	opt_float.unactivated = return_float.unactivated;
