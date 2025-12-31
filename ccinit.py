@@ -114,10 +114,10 @@ def function(argument):
         str_.append(include_item)
         str_.append("\n")
     str_.append("\n")
-    for file in files:
-        position = file.find("\n\n")
+    for key in files_keys:
+        position = files[key].find("\n\n")
         str_.append( "\n" )
-        str_.append( file[(position + 2):] )
+        str_.append( files[key][(position + 2):] )
     str_.append(text_read_file_)
     print("".join(str_))
     write_file_2.write("".join(str_))
