@@ -1,4 +1,4 @@
-/*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/number.c*/
+/*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/number.h*/
 enum Operation{
 	ADD,
 	SUBTRACT,
