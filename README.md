@@ -15,7 +15,7 @@ cp ~/CCinit/ccinit.py ~/.local/bin/ccinit
 ```
 ## How to use
 If there's no `main.c` in the root of the directory, it will create a `main.c` file and no further arguments are provided in the context. If there is one argument, then it will download all the dependencies listed like so, at the start of the file:
-```bash
+```c
 /*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/number.c /types.c /calc.c /random.c*/
 ...
 ```
