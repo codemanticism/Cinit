@@ -32,8 +32,8 @@ cp ~/CCinit/ccinit.py ~/.local/bin/ccinit
 ```
 ## How to use
 ### What to type in the terminal
-*`ccinit`: Create a `main.c` file.
-*`ccinit main.c`: Reads the `main.c` file and actually does all that heavy lifting for you and everything after `\n/*main*/` remains the same.
+* `ccinit`: Create a `main.c` file.
+* `ccinit main.c`: Reads the `main.c` file and actually does all that heavy lifting for you and everything after `\n/*main*/` remains the same.
 
 ### How to format the .c file
 <b>Important: Don't use the `#include "LIBRARY"` structure wherein LIBRARY refers to the file which has already been specified through the the system of initial annotations I made for this program.</b>
