@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 typedef union type_ type_;
 typedef struct array_type array_type;
 typedef int8_t i8;

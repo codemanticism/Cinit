@@ -1,4 +1,5 @@
 /*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/types.c /random.c*/
+
 struct option_number{
 	u32 number;
 	char unactivated;
