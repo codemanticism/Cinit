@@ -14,13 +14,16 @@ git clone git@github.com:codemanticism/CCinit.git
 cp ~/CCinit/ccinit.py ~/.local/bin/ccinit
 ```
 ## How to use
+Don't use the `#include "LIBRARY"` structure wherein LIBRARY refers to the file which has already been specified thru the special one-line `/**/` comment at the start of the file.
+It creates a `compile.sh` file, if there's not one and no arguments are specified, which is supposed to compile it with `gcc`.
 If there's no `main.c` in the root of the directory, it will create a `main.c` file and no further arguments are provided in the context. If there is one argument, then it will download all the dependencies listed like so, at the start of the file:
 ```c
 /*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/number.c /types.c /calc.c /random.c*/
 ...
 ```
+After that, it will compile `main.c`. <b>It expects a `main.c` and a `compile.sh` file<b>.
 It was a to be styled like this: `/*example*/`, not like that: `//example` and has to be the very first line of the file, so the file has to start with `/*`.
 If the element starts with an `/`, it already fills all the stuff in, so that, for example, `/[insert_other_project]/refs/heads/main/main.c` if used in the correct context can make it so that it already fills in the rest, meaning the `https://raw.githubusercontent.com/codemanticism` part, in this case.
 There is an example folder with the full implementation of a library, but only parts of the library can be used if one wants it.
 ## Limits
-It could be theorically used with `.js`, `.cpp` and `.java`, for example, although it was theorically built to be used with `.c`. However it would not be compatible with `.py`.
+It was made to be used for `.c` only.
