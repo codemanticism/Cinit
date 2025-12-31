@@ -9,7 +9,7 @@ struct option_float{
 	float number;
 	char unactivated;
 };
-//Works
+//Works.
 struct option_number convert(char character){ //Use with caution
 	struct option_number option_number_instance;
 	option_number_instance.unactivated = 1;
@@ -19,7 +19,7 @@ struct option_number convert(char character){ //Use with caution
 	}
 	return option_number_instance;
 }
-//Works
+//Works.
 unsigned int how_many_powers_of_ten(char* string){
 	u32 b = 1;
 	for(u32 i = 0; string[i] != '\0'; i++){
@@ -27,7 +27,7 @@ unsigned int how_many_powers_of_ten(char* string){
 	}
 	return b;	
 }
-//Works
+//Works.
 struct option_number process_integer(char* string){
 	u32 number = 0;
 	for(u32 i = 0; string[i] != '\0'; i++){
@@ -45,7 +45,7 @@ struct option_number process_integer(char* string){
 	to_return.number = number;
 	return to_return;	
 }
-//Works, but it actually edits what it receives, so it must be editable, which can be made using the array
+//Works, but it actually edits what it receives, so it must be editable, which can be made using the array.
 struct option_float process_float(char* string){
 	for(u32 i = 0; string[i] != '\0'; i++){
 		if(string[i] == '.'){

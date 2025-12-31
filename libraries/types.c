@@ -19,7 +19,7 @@ struct repeat{
 	unsigned int length;
 	unsigned int number;	
 };
-//Works
+//Works.
 unsigned int get_power_of_two(unsigned int integer){
 	unsigned int power = 1;
 	while(power < integer){
@@ -27,7 +27,7 @@ unsigned int get_power_of_two(unsigned int integer){
 	}
 	return power;
 }
-//Works
+//Works.
 struct array create(unsigned int starting_capacity, unsigned int starting_length, unsigned int size_of){
 	struct array array_var;
 	array_var.length = starting_length;
@@ -35,7 +35,7 @@ struct array create(unsigned int starting_capacity, unsigned int starting_length
 	array_var.ptr = malloc(size_of * starting_capacity);
 	return array_var;
 }
-//Works
+//Works.
 void append(struct array* arr1, struct array arr2, unsigned int size_of){
 	struct array arr = *arr1;
 	const unsigned int new_length = arr.length + arr2.length;
@@ -56,7 +56,7 @@ void append(struct array* arr1, struct array arr2, unsigned int size_of){
 	(*arr1).length = new_length;
 	(*arr1).ptr = ptr; 
 }
-//Works
+//Works.
 void delete(struct array arr, unsigned int index, unsigned int size_of){
 	memcpy((u8*)arr.ptr + (index * size_of), (u8*)arr.ptr + ((index + 1) * size_of), (arr.length - index - 1) * size_of);
 }

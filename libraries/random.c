@@ -1,7 +1,7 @@
 /*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/types.c*/
 #include <stdio.h>
 #include <time.h>
-// Works
+// Works.
 int generate_random_number(unsigned int limit){
     struct timespec ts;
     timespec_get(&ts, TIME_UTC);
