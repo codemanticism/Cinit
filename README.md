@@ -3,7 +3,15 @@
 <b> ⚠️ This is still a largely experimental thing. </b> 
 CCinit lets C files declare their own dependencies using a single comment.
 CCinit is a tool that generates a single `main.c` file based on a `/**/` annotation, at the start of the file, (described in a section below) which might hypothetically include libraries written as URLs or, in shorter form, with an initial `/` in the format described below.
-
+An example:
+```c
+/*https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/calc.c /random.c*/
+//^Where the URLs go.
+/*main*/
+int main(){
+}
+...
+```
 ## License
 
 MIT License. See [LICENSE](LICENSE).
