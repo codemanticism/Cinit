@@ -36,7 +36,7 @@ def process(text, except_if):
                 integer += 1
             array = read[2:integer].split(" ")
             new_array = []
-            old = []
+            old = text.split("/")
             count = 0
             for string in array:
                 if len(string) > 0:

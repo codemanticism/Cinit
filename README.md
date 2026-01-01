@@ -53,6 +53,16 @@ int main(){
 }
 ...
 ```
+or (it should work):
+```c
+/*/calc.c /random.c*/
+//IF PATH is https://raw.githubusercontent.com/codemanticism/CCinit/refs/heads/main/libraries/something.c 
+//^Where the URLs go.
+/*main*/
+int main(){
+}
+...
+```
 It has to be styled like this: `/*example*/`, not like that: `//example`. It has to be the very first line of the file, so the file has to start with `/*`.
 ## Limits
 
