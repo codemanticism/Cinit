@@ -167,16 +167,19 @@ def function(argument):
     write_file_2.write("".join(str_))
     write_file_2.close()
     print("Job done.")
-if len(sys.argv) > 1:
-    function(sys.argv[1])        
-else:
-    try:
-        file_open = open("main.c", "r")
-        file_open.read()
-        file_open.close()
-        
-        function("main.c")
-    except:
-        file_write = open("main.c", "w")
-        file_write.write('/**/\n//^Where the URLs go.\n/*main*/\nint main(){\n}')
-        file_write.close() 
+def main():
+    if len(sys.argv) > 1:
+        function(sys.argv[1])        
+    else:
+        try:
+            file_open = open("main.c", "r")
+            file_open.read()
+            file_open.close()
+            
+            function("main.c")
+        except:
+            file_write = open("main.c", "w")
+            file_write.write('/**/\n//^Where the URLs go.\n/*main*/\nint main(){\n}')
+            file_write.close() 
+if __name__ == "__main__":
+    main()
